@@ -1,7 +1,11 @@
+// So and So has a week full of meetings and needs to find the best interval to sleep. Calculate the best interval in a 7 day week.
 function Solution(S) {
-  // write your code in JavaScript (Node.js 8.9.4)
-
-  // Examples show that that the meetings string is not sorted,so split it by new line, convert the days/times into minutes, sort, subtract each days minutes from the next, largest interval wins.
+  // Examples show that that the meetings string is not sorted,
+  // so split it by new line,
+  // convert the days/times into minutes,
+  // sort them by start time, 
+  // subtract each meetings end time from the next meetings start,
+  // largest interval wins.
   let array = S.split("\n")
     .map((meeting) => convertMeetingToMinutes(meeting))
     .sort((a, b) => a[0] - b[0]);
@@ -10,7 +14,6 @@ function Solution(S) {
 
   let maxInterval = 0;
   for (let i = 1; i < array.length; i++) {
-    console.log(array[i]);
     const interval = array[i][0] - array[i - 1][1];
     if (interval > maxInterval) maxInterval = interval;
   }
