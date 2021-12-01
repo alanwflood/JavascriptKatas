@@ -6,7 +6,7 @@
  * @param {number[]} prices
  * @return {number}
  */
-var maxProfit = function (prices) {
+var maxProfitOld = function (prices) {
   if (prices.length <= 1) {
     return 0;
   }
@@ -33,6 +33,25 @@ var maxProfit = function (prices) {
     }
   }
   return maxProfit;
+};
+
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function (prices) {
+  if (prices.length <= 1) {
+    return 0;
+  }
+
+  let min = prices[0];
+  let profit = prices[1] - prices[0];
+
+  for (let i = 1; i < prices.length; i++) {
+    profit = Math.max(profit, prices[i] - min);
+    min = Math.min(min, prices[i]);
+  }
+  return profit > 0 ? profit : 0;
 };
 
 console.log(maxProfit([7, 1, 5, 3, 6, 4]));
