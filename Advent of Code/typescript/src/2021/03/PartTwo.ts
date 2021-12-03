@@ -1,12 +1,12 @@
 import { splitLine } from '../../lib';
-import { getMostPopularAtPosition } from './PartOne';
+import { countAtPosition } from './PartOne';
 
 function getRating(desiredChar: '0' | '1', dataset: string[]): string {
   let remainingValues = [...dataset];
   const otherChar = desiredChar === '0' ? '1' : '0';
 
   for (let i = 0; i < dataset[0].length; i += 1) {
-    const { count0, count1 } = getMostPopularAtPosition(remainingValues, i);
+    const { count0, count1 } = countAtPosition(remainingValues, i);
     const charToFind = count1 >= count0 ? desiredChar : otherChar
 
     remainingValues = remainingValues

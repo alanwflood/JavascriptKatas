@@ -4,12 +4,16 @@ function invertBinary(input: string[]) {
   return input.map(char => char === '1' ? '0' : '1')
 }
 
-export function getMostPopularAtPosition(dataset: string[], index: number) {
-  const binaryColumn = dataset.map(line => line.charAt(index)).join('');
+export function countAtPosition(dataset: string[], index: number) {
+  const count1 = (dataset
+    .map(line => line.charAt(index))
+    .join('')
+    .match(/1/g
+  ) ?? []).length;
 
   return {
-    count1: (binaryColumn.match(/1/g) ?? []).length,
-    count0: (binaryColumn.match(/0/g) ?? []).length,
+    count1,
+    count0: dataset.length - count1,
   };
 }
 
@@ -18,7 +22,7 @@ function getMostPopular(dataset: string[]): string[] {
   const mostPopular = new Array(binaryLength)
 
   for (let i = 0; i < binaryLength; i++) {
-    const { count1, count0 } = getMostPopularAtPosition(dataset, i);
+    const { count1, count0 } = countAtPosition(dataset, i);
     mostPopular[i] = (count1 > count0 ? '1' : '0');
   }
 
