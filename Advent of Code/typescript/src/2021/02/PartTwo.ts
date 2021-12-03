@@ -5,9 +5,7 @@ export function runner(input: string) {
   let y = 0;
   let axis = 0;
 
-  const movements = mapMovements(input)
-
-  for (let [direction, value] of movements) {
+  for (let [direction, value] of mapMovements(input)) {
     switch(direction)  {
       case Direction.forward:
          x += value;
