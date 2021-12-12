@@ -26,5 +26,13 @@ export function read<A>(year: number, day: number, file = 'input.txt') {
 };
 
 export function splitLine(string: string) {
-  return string.split(/\r?\n/).filter(Boolean);
+  return string
+    .split(/\r?\n/)
+    .filter(Boolean);
+}
+
+export function splitBlankLine(string: string) {
+  return string
+    .split('\n\n')
+    .filter(Boolean);
 }
