@@ -37,6 +37,10 @@ export function splitBlankLine(string: string) {
     .filter(Boolean);
 }
 
+export function parseCommmaDelimitedNumbers(string: string) {
+  return string.split(',').map(number => parseInt(number, 10));
+}
+
 export function sum(array: number[]): number {
   return array.reduce((a, b) => a + b, 0);
 }
