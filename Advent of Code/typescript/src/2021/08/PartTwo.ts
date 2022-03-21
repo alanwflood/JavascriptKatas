@@ -18,7 +18,7 @@ type WeightMap = {
 // eafb: 30 / 4
 // cagedb: 42 / 0
 // ab: 17 / 1
-function mapWeight(weight: number): number {
+function mapWeight(weight: Weight): number {
   switch (weight) {
     case 17:
       return 1;
